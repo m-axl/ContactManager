@@ -25,16 +25,28 @@ Os dados serão armazenados em arquivo local
 <!--Podem aparecer ou surgir mais requisitos caso seja necessário, contudo este é o fundamento mínimo para a aplicação -->
 ---
 # Requisitos Não Funcionais 
-| ID     |       Nome       |         Descrição             | Prioridades    |
-|--------|------------------|-------------------------------|----------------|
-| RNF-01 |  Plataforma      | Deve Ser Compativel Com Linux | UC-1
-| RNF-02 |  Interface       | Exclusivamente Via Terminal   | UC-2
+| ID     |       Nome       |         Descrição             | 
+|--------|------------------|-------------------------------|
+| RNF-01 |  Plataforma      | Deve Ser Compativel Com Linux | 
+| RNF-02 |  Interface       | Exclusivamente Via Terminal   | 
 | RNF-03 |  Persistência    | Dados Disp. Após Enc. Do Prog.|
-| RNF-04 |  Desempenho      | O Sist. Deve Resp. Imed.  Ate |
-| RNF-05 |  Simplicidade    | Possuir Navegação Em Menu Num.|
-| RNF-06 |  Manutenibiidade | O Código Deve Ser Org.        |
+| RNF-04 |  Desempenho      | O Sist. Deve Resp. Imed.  Ate | 
+| RNF-05 |  Simplicidade    | Possuir Navegação Em Menu Num.|    
+| RNF-06 |  Manutenibiidade | O Código Deve Ser Org.        | 
 <!--Podem ser adicionados mais RNF ao longo do projeto-->
 ---
+
+## Requisitos De Engenharia 
+| ID    |       Nome                       | Descrição                                        |
+|-------|----------------------------------|--------------------------------------------------|
+| RE-01 | Modularização                    | Cada Funcionaldidade Deve Possuir Função Pròpria |
+| RE-02 | Separação De Responsabilidadeas  | Interface, Lògica e Persistência Devem Permanecer Desacopladas |
+| RE-03 | Tratamento De Erros              | Operações Crìticas Devem Validar Entradas E Falhas | 
+| RE-04 | Uso De Constantes                | Limites De Sistema Devem Usar Constantes Simbolicas |
+| RE-05 | Estruturas De Dados              | Os Contatos Devem Ser Representados Por Estruturas |
+| RE-06 | Organização De Projetos          | Código-Fonte, Documentação, E Dados Devem Permanecer Separados |
+<!--Requisitos base iniciais acrescentados parcialmente-->
+---- 
 
 ## Restrições 
 |   ID |  Nome          | Descrição          |  
