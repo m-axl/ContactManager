@@ -1,0 +1,88 @@
+<svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .process { fill: #e3f2fd; stroke: #1565c0; stroke-width: 2; }
+      .decision { fill: #fff9c4; stroke: #f57f17; stroke-width: 2; }
+      .terminator { fill: #c8e6c9; stroke: #2e7d32; stroke-width: 2; rx: 20; }
+      .text { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+      .small-text { font-family: Arial, sans-serif; font-size: 10px; text-anchor: middle; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Start -->
+  <rect class="terminator" x="200" y="10" width="200" height="40"/>
+  <text class="text" x="300" y="35">Início</text>
+  
+  <!-- Arrow -->
+  <path class="arrow" d="M 300 50 L 300 80"/>
+  
+  <!-- Load Data -->
+  <rect class="process" x="150" y="80" width="300" height="50"/>
+  <text class="text" x="300" y="110">Carregar dados do arquivo</text>
+  
+  <!-- Arrow -->
+  <path class="arrow" d="M 300 130 L 300 160"/>
+  
+  <!-- Show Menu -->
+  <rect class="process" x="150" y="160" width="300" height="50"/>
+  <text class="text" x="300" y="190">Exibir menu principal</text>
+  
+  <!-- Arrow -->
+  <path class="arrow" d="M 300 210 L 300 240"/>
+  
+  <!-- Choice Diamond -->
+  <polygon class="decision" points="300,240 380,300 300,360 220,300"/>
+  <text class="small-text" x="300" y="305">Escolher ação</text>
+  
+  <!-- Add Contact -->
+  <path class="arrow" d="M 220 300 L 80 300"/>
+  <path class="arrow" d="M 80 300 L 80 400"/>
+  <rect class="process" x="20" y="400" width="120" height="40"/>
+  <text class="small-text" x="80" y="425">Adicionar</text>
+  <path class="arrow" d="M 80 440 L 300 520"/>
+  
+  <!-- List Contacts -->
+  <path class="arrow" d="M 260 340 L 200 400"/>
+  <rect class="process" x="150" y="400" width="100" height="40"/>
+  <text class="small-text" x="200" y="425">Listar</text>
+  <path class="arrow" d="M 200 440 L 300 520"/>
+  
+  <!-- Search Contact -->
+  <path class="arrow" d="M 300 360 L 300 400"/>
+  <rect class="process" x="250" y="400" width="100" height="40"/>
+  <text class="small-text" x="300" y="425">Buscar</text>
+  <path class="arrow" d="M 300 440 L 300 520"/>
+  
+  <!-- Remove Contact -->
+  <path class="arrow" d="M 340 340 L 400 400"/>
+  <rect class="process" x="350" y="400" width="100" height="40"/>
+  <text class="small-text" x="400" y="425">Remover</text>
+  <path class="arrow" d="M 400 440 L 300 520"/>
+  
+  <!-- Exit -->
+  <path class="arrow" d="M 380 300 L 520 300"/>
+  <path class="arrow" d="M 520 300 L 520 560"/>
+  <rect class="process" x="450" y="560" width="140" height="40"/>
+  <text class="small-text" x="520" y="585">Salvar dados</text>
+  
+  <!-- Return to Menu -->
+  <path class="arrow" d="M 300 520 L 300 540"/>
+  <rect class="decision" x="250" y="540" width="100" height="40"/>
+  <text class="small-text" x="300" y="565">Sair?</text>
+  
+  <!-- No loop -->
+  <path class="arrow" d="M 250 560 L 100 560 L 100 190 L 150 190"/>
+  <text class="small-text" x="120" y="375">Não</text>
+  
+  <!-- Yes to End -->
+  <path class="arrow" d="M 300 580 L 300 610"/>
+  <text class="small-text" x="285" y="605">Sim</text>
+  
+  <!-- End -->
+  <rect class="terminator" x="200" y="610" width="200" height="40"/>
+  <text class="text" x="300" y="635">Fim</text>
+</svg>
