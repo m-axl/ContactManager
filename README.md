@@ -68,7 +68,7 @@ flowchart TD
 * Debbuger
 * Bash 
 * Git & GitHub 
-
+----
 # Status - Fase Atual 
 ```
 [  ]  Requisitos
@@ -85,3 +85,4 @@ Autor -  Manoel E. S. S
 E-mail - ghostnether28@gmail.com
 ```
 ---
+<!-- Revisar e documentar periodicamente este arquivo para manter dados coerentes ao longo do projetoe ciclo de desenvolvimento -->
