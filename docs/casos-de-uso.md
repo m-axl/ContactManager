@@ -1,7 +1,7 @@
 # Casos de Uso
 
 ## Descrição geral
-Este documento apresenta os casos de uso principais do sistema ContactManager em diagramas Mermaid.
+Este documento descreve os casos de uso do sistema ContactManager e a interação do usuário com as funcionalidades atualmente planejadas.
 
 ## Caso de Uso Principal
 ```mermaid
@@ -14,6 +14,7 @@ flowchart TB
       D[Remover contato]
       E[Salvar dados em arquivo]
       F[Carregar dados ao iniciar]
+      G[Sair do programa]
     end
 
     actor --> A
@@ -22,40 +23,39 @@ flowchart TB
     actor --> D
     actor --> E
     actor --> F
+    actor --> G
 ```
 
 ## Casos de Uso Detalhados
-### Caso de Uso: Gerenciar contatos
-```mermaid
-flowchart TB
-    actor[Usuário]
-    subgraph Gerenciamento de contatos
-      A[Adicionar contato]
-      B[Listar contatos]
-      C[Buscar contato]
-      D[Remover contato]
-    end
 
-    actor --> A
-    actor --> B
-    actor --> C
-    actor --> D
-```
+### Caso de Uso: Adicionar contato
+- O usuário seleciona a opção de adicionar contato.
+- O sistema solicita nome e telefone.
+- O sistema armazena o contato em memória.
+- O sistema retorna ao menu principal.
+
+### Caso de Uso: Listar contatos
+- O usuário seleciona a opção de listar contatos.
+- O sistema exibe todos os contatos presentes em memória.
+- O sistema retorna ao menu principal.
+
+### Caso de Uso: Buscar contato
+- O usuário seleciona a opção de buscar contato.
+- O sistema solicita o termo de busca.
+- O sistema exibe os contatos cujo nome ou telefone contenham o termo.
+- O sistema retorna ao menu principal.
+
+### Caso de Uso: Remover contato
+- O usuário seleciona a opção de remover contato.
+- O sistema solicita o nome ou o índice do contato.
+- O sistema remove o contato correspondente da memória.
+- O sistema atualiza o arquivo de dados e retorna ao menu.
 
 ### Caso de Uso: Persistência de dados
-```mermaid
-flowchart TB
-    actor[Usuário]
-    subgraph Persistência
-      A[Salvar dados em arquivo]
-      B[Carregar dados ao iniciar]
-    end
-
-    actor --> A
-    actor --> B
-```
+- O sistema carrega contatos do arquivo ao iniciar.
+- O sistema salva contatos no arquivo antes de encerrar.
 
 ## Notas
 - O ator principal é o usuário do terminal.
-- O sistema suporta operações básicas de CRUD e persistência entre execuções.
-- Os diagramas mostram a interação do usuário com as funcionalidades de gerenciamento e armazenamento.
+- O sistema deve ser simples e responder via CLI.
+- Por agora, o foco é validar as operações básicas e estabelecer a arquitetura de persistência.

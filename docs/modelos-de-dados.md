@@ -1,139 +1,51 @@
 # Modelo de Dados
 
-Este documento descreve o modelo de dados do ContactManager para PostgreSQL.
+Este documento descreve o modelo de dados atual do ContactManager em C.
 
-## Diagrama ER (Entity Relationship)
-```mermaid
-erDiagram
-    USUARIO ||--o{ CONTATO : tem
-    CONTATO ||--o{ TELEFONE : possui
-    CONTATO ||--o{ EMAIL : possui
-    USUARIO {
-        int id PK
-        string nome UK
-        string email UK
-        timestamp data_criacao
-    }
-    CONTATO {
-        int id PK
-        int usuario_id FK
-        string nome
-        string sobrenome
-        string categoria
-        timestamp data_criacao
-        timestamp data_atualizacao
-    }
-    TELEFONE {
-        int id PK
-        int contato_id FK
-        string numero UK
-        string tipo "pessoal|comercial|outro"
-    }
-    EMAIL {
-        int id PK
-        int contato_id FK
-        string endereco UK
-        string tipo "pessoal|comercial|outro"
-    }
+## Estrutura de Contato
+
+A estrutura utilizada em `include/contact.h` é:
+
+```c
+#define MAX_NAME 100
+#define MAX_PHONE 20
+
+typedef struct {
+    char name[MAX_NAME];
+    char phone[MAX_PHONE];
+} Contact;
 ```
 
-## Schema PostgreSQL
+### Campos
+- `name` — nome do contato, até 99 caracteres.
+- `phone` — telefone do contato, até 19 caracteres.
 
-### Tabela: usuario
-```sql
-CREATE TABLE usuario (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL UNIQUE,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+## Armazenamento em memória
+
+Os contatos são mantidos em um vetor de `Contact` em memória durante a execução do programa.
+
+## Formato de persistência
+
+O arquivo de dados esperado é `data/contacts.txt`. Cada contato deve estar em uma linha no formato:
+
+```
+nome,telefone
 ```
 
-### Tabela: contato
-```sql
-CREATE TABLE contato (
-    id SERIAL PRIMARY KEY,
-    usuario_id INTEGER NOT NULL REFERENCES usuario(id) ON DELETE CASCADE,
-    nome VARCHAR(100) NOT NULL,
-    sobrenome VARCHAR(100),
-    categoria VARCHAR(50),
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE(usuario_id, nome, sobrenome)
-);
+Exemplo:
+
+```
+João,11999999999
+Maria,21988887777
 ```
 
-### Tabela: telefone
-```sql
-CREATE TABLE telefone (
-    id SERIAL PRIMARY KEY,
-    contato_id INTEGER NOT NULL REFERENCES contato(id) ON DELETE CASCADE,
-    numero VARCHAR(20) NOT NULL UNIQUE,
-    tipo VARCHAR(20) CHECK (tipo IN ('pessoal', 'comercial', 'outro'))
-);
-```
+## Limitações atuais
+- O modelo atual não inclui campos de e-mail, ID ou categorias.
+- A implementação de persistência ainda não está concluída.
+- Caso o diretório `data/` não exista, a aplicação deve criar o diretório antes de salvar os dados.
 
-### Tabela: email
-```sql
-CREATE TABLE email (
-    id SERIAL PRIMARY KEY,
-    contato_id INTEGER NOT NULL REFERENCES contato(id) ON DELETE CASCADE,
-    endereco VARCHAR(100) NOT NULL UNIQUE,
-    tipo VARCHAR(20) CHECK (tipo IN ('pessoal', 'comercial', 'outro'))
-);
-```
-
-## Índices para Desempenho
-```sql
-CREATE INDEX idx_usuario_nome ON usuario(nome);
-CREATE INDEX idx_contato_usuario_id ON contato(usuario_id);
-CREATE INDEX idx_contato_nome ON contato(nome);
-CREATE INDEX idx_telefone_numero ON telefone(numero);
-CREATE INDEX idx_email_endereco ON email(endereco);
-```
-
-## Consultas Básicas
-
-### Listar contatos de um usuário
-```sql
-SELECT c.id, c.nome, c.sobrenome, c.categoria
-FROM contato c
-WHERE c.usuario_id = $1
-ORDER BY c.nome;
-```
-
-### Buscar contato por nome
-```sql
-SELECT c.id, c.nome, c.sobrenome, c.categoria,
-       t.numero, e.endereco
-FROM contato c
-LEFT JOIN telefone t ON c.id = t.contato_id
-LEFT JOIN email e ON c.id = e.contato_id
-WHERE c.usuario_id = $1 AND c.nome ILIKE $2;
-```
-
-### Adicionar novo contato
-```sql
-BEGIN;
-INSERT INTO contato (usuario_id, nome, sobrenome, categoria)
-VALUES ($1, $2, $3, $4)
-RETURNING id;
-
-INSERT INTO telefone (contato_id, numero, tipo)
-VALUES (NEW_CONTATO_ID, $5, 'pessoal');
-
-INSERT INTO email (contato_id, endereco, tipo)
-VALUES (NEW_CONTATO_ID, $6, 'pessoal');
-COMMIT;
-```
-
-### Remover contato
-```sql
-DELETE FROM contato WHERE id = $1 AND usuario_id = $2;
-```
-
-## Notas
-- O modelo utiliza `ON DELETE CASCADE` para manter integridade referencial.
-- Campos `data_criacao` e `data_atualizacao` rastreiam mudanças.
-- Tipos de contato são restritos por `CHECK` constraints.
-- Índices melhoram a performance nas consultas mais frequentes.
+## Possíveis extensões futuras
+- adicionar campo `email`
+- adicionar campo `id` único para cada contato
+- suportar múltiplos telefones por contato
+- usar formato CSV mais robusto ou JSON

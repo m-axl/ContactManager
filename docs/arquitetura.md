@@ -1,112 +1,82 @@
-# Arquitetura Do Sistema 
+# Arquitetura do Sistema
 
-## 1 - Visão Geral  
+## Visão Geral
 
-ContactManager é uma aplicação de terminal composta por módulos responsáveis pela interface com o usuário, gerenciamento de contatos e persistência de dados.
+ContactManager é um protótipo em C com divisão de responsabilidades entre interface, lógica de contatos e persistência.
 
-A arquitetura segue uma divisão simples de responsabilidades para facilitar manutenção e espansão futura.
+A arquitetura atual separa:
+- definição de tipos e assinaturas em `include/`
+- operações de contato em `src/contact.c`
+- persistência de dados em `src/storage.c`
+- fluxo de execução e menu em `src/main.c`
 
-## 2 - Componentes 
+## Componentes principais
 
-### Menu 
-Responsável por: 
-* Exibir as opções ao usuário 
-* Receber entradas 
-* Direcionar operações 
----
-### Agenda 
-Responsável por: 
-* Adicionar contatos 
-* Listar contatos 
-* Buscar contatos 
-* Remover contatos 
---- 
-### Persistência  
-Reponsável por: 
-* Salvar contatos em arquivo 
-* Carregar contatos do arquivo 
+### `src/main.c`
+Responsável por:
+- inicializar o programa
+- carregar os contatos do arquivo
+- exibir o menu principal ao usuário
+- disparar as operações correspondentes às opções escolhidas
+- salvar os dados antes de encerrar
 
----
-### Fluxo Geral 
+### `src/contact.c`
+Responsável por:
+- adicionar um contato à lista em memória
+- listar contatos presentes em memória
+- buscar contatos
+- remover contatos
+
+### `src/storage.c`
+Responsável por:
+- salvar os contatos em arquivo local
+- carregar os contatos gravados ao iniciar o programa
+
+### `include/contact.h`
+Define a estrutura de dados `Contact` e as funções de contato.
+
+### `include/storage.h`
+Define as assinaturas de `saveContacts` e `loadContacts`.
+
+## Fluxo geral esperado
 
 ```mermaid
 flowchart LR
-  Init[Inicialização] --> Load[Carregar Dados]
-  Load --> Menu[Exibir Menu]
-  Menu --> Input[Receber Opção]
-  Input --> Execute[Executar Operação]
-  Execute --> Loop[Retornar Ao Menu]
+  Init[Inicialização] --> Load[Carregar dados do arquivo]
+  Load --> Menu[Exibir menu principal]
+  Menu --> Input[Receber opção do usuário]
+  Input --> Execute[Executar operação selecionada]
+  Execute --> Loop[Voltar ao menu]
   Loop --> Check{Encerrar?}
   Check -- Não --> Menu
-  Check -- Sim --> Save[Salvar Dados]
+  Check -- Sim --> Save[Salvar contatos no arquivo]
   Save --> End[Finalizar]
 ```
 
-## Estrutura de arquivos — Guia
-
-A seguir está uma estrutura mínima recomendada para o projeto, com propósito de cada item. Use-a como referência ao criar o repositório ou portar para C.
+## Estrutura de arquivos atual
 
 ```
 ContactManager/
-├─ LICENSE
 ├─ README.md
+├─ LICENSE
 ├─ docs/
-│  ├─ arquitetura.md         # este documento (visão + guia)
-│  ├─ arquitetura_c.md      # arquitetura mínima em C
-│  └─ ...
-├─ src/                    # código-fonte (Python ou C)
-│  ├─ __init__.py
-│  ├─ contacts.py
-│  └─ ...
-├─ include/                # cabeçalhos C (se portar para C)
-│  └─ *.h
-├─ data/                   # arquivos de persistência (CSV/JSON)
-│  └─ contacts.csv
-├─ tests/                  # testes unitários
-│  └─ test_contacts.py
-├─ Makefile / setup.py     # build ou instalação
-└─ .gitignore
+├─ include/
+│  ├─ contact.h
+│  └─ storage.h
+└─ src/
+   ├─ main.c
+   ├─ contact.c
+   └─ storage.c
 ```
 
-## Diagrama da Estrutura
+## Observações sobre o estado atual
 
-```mermaid
-flowchart TB
-  subgraph CM["ContactManager"]
-    lic[LICENSE]
-    read["README.md"]
-    subgraph docs["docs/"]
-      arch["arquitetura.md"]
-      archc["arquitetura_c.md"]
-    end
-    subgraph src["src/"]
-      py["__init__.py / contacts.py"]
-      csrc["*.c (para versão C)"]
-    end
-    subgraph inc["include/"]
-      hdrs["*.h"]
-    end
-    subgraph data["data/"]
-      csv["contacts.csv"]
-    end
-    subgraph tests["tests/"]
-      tfile["test_contacts.py / test_contacts.c"]
-    end
-    mk["Makefile / setup.py"]
-    gi[".gitignore"]
-  end
+- `src/contact.c` contém funções de cadastro e listagem em memória.
+- `src/storage.c` está em desenvolvimento e precisa de correção para gravar e ler corretamente.
+- `src/main.c` ainda não possui o menu completo nem a sequência de chamadas de rotina.
+- O arquivo de persistência esperado é `data/contacts.txt`.
 
-  CM --> lic
-  CM --> read
-  CM --> docs
-  CM --> src
-  CM --> inc
-  CM --> data
-  CM --> tests
-  CM --> mk
-  CM --> gi
-```
-
-## Referência ao UML
-- O diagrama de classes UML está disponível em `docs/uml.md`.
+## Referência
+- Veja também `docs/modelos-de-dados.md` para o formato do contato e do armazenamento.
+- O histórico de desenvolvimento está em `docs/diario/diario.md`.
 

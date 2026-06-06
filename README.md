@@ -1,88 +1,84 @@
-# ContactManager 
+# ContactManager
 ---
 
-Sistema de gerenciamento de contatos em ambiente de terminal desenvolvido em linguagem ``C``
+ContactManager é um protótipo de sistema de gerenciamento de contatos para terminal desenvolvido em C.
 
-O projeto tem como objetivo exercitar fundamentos de engenharia de software, programação em C, modelagem de requisitos, documentação técnica, persistência de dadis e organização modular de código. 
+![MVP planejado do ContactManager](docs/diagramas/mvp-projeto-final.svg)
 
-# Objetivos 
+O projeto foca em:
+- operações básicas de cadastro, consulta, remoção e persistência de contatos.
+- organização modular de código em `include/` e `src/`.
+- documentação técnica e rastreamento do desenvolvimento.
 
-* Gerenciar contatos via terminal 
-* Armazenar contatos localmente 
-* Aplicar um processo simplificado de SLDC 
-* Desenvolver boas práticas de engenharia de software 
+# Objetivo
 
-# Funcionalidades 
+Permitir que um usuário manipule contatos em linha de comando e mantenha os dados gravados localmente em arquivo.
 
-* Adicionar contatos 
-* Listar contatos 
-* Buscar contatos 
-* Remover contatos 
-* Salvar dados em arquivos 
-* carregar arquivos ao iniciar 
+# Escopo atual
 
-# Estrutura do Projeto 
+* Adicionar contatos
+* Listar contatos
+* Buscar contatos
+* Remover contatos
+* Salvar contatos em arquivo
+* Carregar contatos ao iniciar
+
+# Estrutura do projeto
+
 ```
 ContactManager/
-|__docs/
-|___src/
-|___include/
-|___data/
-|___tests/
-|
-|___.gitignore
-|
-|___README.md
-|___MAKEFILE
+├─ README.md
+├─ LICENSE
+├─ docs/
+│  ├─ README.md
+│  ├─ arquitetura.md
+│  ├─ casos-de-uso.md
+│  ├─ fluxos.md
+│  ├─ modelos-de-dados.md
+│  ├─ product-backlog.md
+│  ├─ requisitos.md
+│  ├─ resultados.md
+│  ├─ testes.md
+│  └─ diario/
+│     └─ diario.md
+├─ include/
+│  ├─ contact.h
+│  └─ storage.h
+└─ src/
+   ├─ main.c
+   ├─ contact.c
+   └─ storage.c
 ```
 
-# Processo de Desenvolvimento 
-```mermaid
-flowchart TD
-    A[Requisitos] --> B[Análise e Especificação]
-    B --> C[Modelagem do Sistema]
-    C --> D[Implementação em C]
-    D --> E[Testes e Validação]
-    E --> F[Documentação Técnica]
-    F --> G[Entrega e Manutenção]
-    subgraph Processo Simplificado de SDLC
-      A
-      B
-      C
-      D
-      E
-      F
-      G
-    end
-```
- 
-# Tecnologias 
+# Como compilar
 
-* Linguagem C 
-* GCC
-* Make
-* Linux
-* Vs Code 
-* CLI 
-* CLang 
-* Debbuger
-* Bash 
-* Git & GitHub 
-----
-# Status - Fase Atual 
+O projeto ainda está em desenvolvimento. Para compilar após corrigir as implementações, use:
+
+```bash
+mkdir -p data
+gcc -Iinclude src/main.c src/contact.c src/storage.c -o contactmanager
 ```
-[  ]  Requisitos
-[  ]  Casos De Uso  
-[  ]  Modelos De Dados 
-[  ]  Arquitetura 
-[  ]  Implementação 
-[  ]  Testes 
-[  ]  Conclusão 
-```
----
-```
-Autor -  Manoel E. S. S
-E-mail - ghostnether28@gmail.com
-```
----
-<!-- Revisar e documentar periodicamente este arquivo para manter dados coerentes ao longo do projetoe ciclo de desenvolvimento -->
+
+# Status do projeto
+
+* Implementação parcial em `src/contact.c`.
+* Interface de persistência definida em `include/storage.h`.
+* `src/storage.c` ainda precisa de correção e validação.
+* `src/main.c` ainda não contém o menu principal e o fluxo de execução.
+
+# Documentação
+
+* `docs/README.md` — índice da documentação do projeto.
+* `docs/requisitos.md` — requisitos funcionais e não funcionais.
+* `docs/arquitetura.md` — arquitetura do sistema em C.
+* `docs/casos-de-uso.md` — casos de uso e diagramas.
+* `docs/fluxos.md` — fluxos operacionais do sistema.
+* `docs/modelos-de-dados.md` — modelo de dados e formato de persistência.
+* `docs/product-backlog.md` — backlog de funcionalidades.
+* `docs/resultados.md` — resultados concluídos.
+* `docs/testes.md` — casos de teste.
+* `docs/diario/diario.md` — histórico de desenvolvimento.
+
+# Observações
+
+O projeto está em fase de desenvolvimento e a documentação foi reorganizada para refletir o estado atual do código e do planejamento.

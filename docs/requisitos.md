@@ -1,76 +1,75 @@
-# ContactManager - Requisitos Do Sistema 
+# ContactManager - Requisitos do Sistema
 
-## Introdução 
-ContactManager é um sistema de gerenciamento de contatos em ambiente de terminal. Seu propósito é permitir o armazenamento, consulta, remoção e persitência de contatos de forma simples, organizada e confiável.
+## Introdução
 
----
-## 1.2 Escopo 
-O sistema deverá operar localmente em um computador, sem depempências de redes ou banco de dados externo.
+ContactManager é um sistema de terminal para gerenciamento local de contatos. O objetivo é fornecer operações básicas de cadastro, consulta, remoção e persistência em arquivo.
 
-```
-Os dados serão armazenados em arquivo local 
-```
+## Escopo
 
-# Requisitos Funcionais 
+O sistema opera localmente e não depende de rede ou banco de dados externo.
 
-| ID    |        Nome       |     Descrição       | Prioridades |
-|-------|-------------------|---------------------|-------------|
-| RF-01 | Adicionar Contato | Cadastrar Contatato | Alta | UC-1 |
-| RF-02 | Listar Contatos   | Exibir Contatos     | Alta | UC-2 |
-| RF-03 | Buscar Contatos   | Buscar Por Nomes    | Alta | UC-3 |
-| RF-04 | Remover Contato   | Excluir Contato     | Alta | UC-4 |
-| RF-05 | Salvar Dados      | Persistir Dados     | Alta | UC-5 | 
-| RF-06 | Carregar Dados    | Ler Dados Salvos    | Alta | UC-6 | 
-| RF-07 | Encerrar Programa | O Sistema Encerra   | Alta | UC-7 | 
-<!--Podem aparecer ou surgir mais requisitos caso seja necessário, contudo este é o fundamento mínimo para a aplicação -->
----
-# Requisitos Não Funcionais 
-| ID     |       Nome       |         Descrição             | 
-|--------|------------------|-------------------------------|
-| RNF-01 |  Plataforma      | Deve Ser Compativel Com Linux | 
-| RNF-02 |  Interface       | Exclusivamente Via Terminal   | 
-| RNF-03 |  Persistência    | Dados Disp. Após Enc. Do Prog.|
-| RNF-04 |  Desempenho      | O Sist. Deve Resp. Imed.  Ate | 
-| RNF-05 |  Simplicidade    | Possuir Navegação Em Menu Num.|    
-| RNF-06 |  Manutenibiidade | O Código Deve Ser Org.        | 
-<!--Podem ser adicionados mais RNF ao longo do projeto-->
----
+> Os dados são armazenados em arquivo local.
 
-## Requisitos De Engenharia 
-| ID    |       Nome                       | Descrição                                        |
-|-------|----------------------------------|--------------------------------------------------|
-| RE-01 | Modularização                    | Cada Funcionaldidade Deve Possuir Função Pròpria |
-| RE-02 | Separação De Responsabilidadeas  | Interface, Lògica e Persistência Devem Permanecer Desacopladas |
-| RE-03 | Tratamento De Erros              | Operações Crìticas Devem Validar Entradas E Falhas | 
-| RE-04 | Uso De Constantes                | Limites De Sistema Devem Usar Constantes Simbolicas |
-| RE-05 | Estruturas De Dados              | Os Contatos Devem Ser Representados Por Estruturas |
-| RE-06 | Organização De Projetos          | Código-Fonte, Documentação, E Dados Devem Permanecer Separados |
-<!--Requisitos base iniciais acrescentados parcialmente-->
----- 
+## Requisitos Funcionais
 
-## Restrições 
-|   ID |  Nome          | Descrição          |  
-|------|----------------|--------------------|
-| RC-01 | Linguagem     | Deve Ser Imp. Em C |
-| RC-02 | Ambiente      | Deve Executar Em Linux |
-| RC-03 | Interface     | Deve Usar Apenas CLI |
-| RC-04 | Armazenamento | Persistidos Em Local |
-| RC-05 | BD            | Sem BD Externo  |
-| RC-06 | Rede          | Sem Comunicação De Rede |
-| RC-07 | Capacidade    | Deve Suportar Até 100 CTT | 
-| RC-08 | Dependências  | Apenas Libc Padrão De C  | 
-| RC-09 | Execução      | Deve Operar Localmente Em Uma Unica Máquina | 
-<!--Podem surgir mais restruções ao longo do projeto, rever e evoluir conforme planejado-->
----
+| ID    | Nome              | Descrição                            | Prioridade | Caso de Uso |
+|-------|-------------------|--------------------------------------|------------|-------------|
+| RF-01 | Adicionar contato | Cadastrar novo contato em memória    | Alta       | UC-1        |
+| RF-02 | Listar contatos   | Exibir contatos cadastrados          | Alta       | UC-2        |
+| RF-03 | Buscar contatos   | Buscar contatos por nome ou telefone | Alta       | UC-3        |
+| RF-04 | Remover contato   | Excluir contato existente            | Alta       | UC-4        |
+| RF-05 | Salvar dados      | Persistir contatos em arquivo        | Alta       | UC-5        |
+| RF-06 | Carregar dados    | Ler contatos ao iniciar o sistema    | Alta       | UC-6        |
+| RF-07 | Encerrar          | Finalizar o programa de forma limpa  | Alta       | UC-7        |
 
-## Critérios De Aceitação 
+## Requisitos Não Funcionais
 
-O ContactManager será considerado funcional quando: 
+| ID     | Nome            | Descrição                                           |
+|--------|-----------------|-----------------------------------------------------|
+| RNF-01 | Plataforma      | Compatível com Linux                                 |
+| RNF-02 | Interface       | Interface de linha de comando (CLI)                  |
+| RNF-03 | Persistência    | Manter dados entre execuções                         |
+| RNF-04 | Simplicidade    | Navegação clara por menu numérico                    |
+| RNF-05 | Manutenibilidade| Código organizado e modular                          |
+| RNF-06 | Desempenho      | Resposta rápida para operações básicas               |
 
-* Permitir adicionar contatos 
-* Permitir listar contatos 
-* Permitir buscar contatos 
-* Permitir remover contatos 
-* Salvar dados corretamente 
-* Carregar dados corretamente 
-* Encerrar sem perda de informações 
+## Requisitos de Engenharia
+
+| ID    | Nome                          | Descrição                                                        |
+|-------|-------------------------------|------------------------------------------------------------------|
+| RE-01 | Modularização                 | Cada funcionalidade deve estar em módulo separado                |
+| RE-02 | Separação de responsabilidades| Interface, lógica de negócio e persistência devem ser desacopladas|
+| RE-03 | Tratamento de erros           | Entradas e falhas devem ser validadas                             |
+| RE-04 | Uso de constantes             | Limites e tamanhos devem usar constantes simbólicas              |
+| RE-05 | Estruturas de dados           | Contatos devem ser representados por `struct`                    |
+| RE-06 | Organização de projeto        | Código, documentação e dados devem permanecer separados          |
+
+## Restrições
+
+| ID     | Nome           | Descrição                                               |
+|--------|----------------|---------------------------------------------------------|
+| RC-01  | Linguagem      | Implementar em C                                         |
+| RC-02  | Ambiente       | Executar em Linux                                        |
+| RC-03  | Interface      | Usar somente CLI                                         |
+| RC-04  | Armazenamento  | Persistir em arquivo local                               |
+| RC-05  | Base de dados  | Não usar banco de dados externo                          |
+| RC-06  | Rede           | Sem comunicação de rede                                  |
+| RC-07  | Capacidade     | Suportar até 100 contatos                                |
+| RC-08  | Dependências   | Usar apenas a biblioteca padrão do C                     |
+| RC-09  | Execução       | Operar localmente em uma única máquina                   |
+
+## Critérios de aceitação
+
+O ContactManager será considerado funcional quando:
+
+* for possível adicionar contatos
+* for possível listar contatos
+* for possível buscar contatos
+* for possível remover contatos
+* os dados forem salvos corretamente
+* os dados forem carregados corretamente
+* o programa encerrar sem perda de informações
+
+## Estado atual
+
+A implementação atual está em desenvolvimento. A documentação descreve o projeto real, mas o código ainda precisa ser corrigido para suportar todas as funcionalidades previstas.

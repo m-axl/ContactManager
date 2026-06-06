@@ -7,27 +7,27 @@ Esta pasta contém os diagramas SVG do projeto ContactManager, gerados a partir 
 ### 1. Processo de Desenvolvimento
 - **Arquivo**: `processo-desenvolvimento.svg`
 - **Descrição**: Fluxograma do processo simplificado de SDLC (Software Development Lifecycle)
-- **Referência**: [docs/README.md](../docs/overview.md#9-processo-de-desenvolvimento)
+- **Referência**: [docs/README.md](../README.md)
 
 ### 2. Casos de Uso
 - **Arquivo**: `casos-de-uso.svg`
 - **Descrição**: Diagrama de casos de uso mostrando as interações do usuário com o sistema
-- **Referência**: [docs/casos-de-uso.md](../docs/casos-de-uso.md)
+- **Referência**: [docs/casos-de-uso.md](../casos-de-uso.md)
 
 ### 3. UML de Classes
 - **Arquivo**: `uml-classes.svg`
 - **Descrição**: Diagrama UML de classes mostrando os componentes principais do sistema
-- **Referência**: [docs/uml.md](../docs/uml.md)
+- **Referência**: [../uml.md](../uml.md)
 
 ### 4. Fluxo de Inicialização
 - **Arquivo**: `fluxo-inicializacao.svg`
 - **Descrição**: Fluxograma detalhado do processo de inicialização e operação do sistema
-- **Referência**: [docs/fluxos.md](../docs/fluxos.md)
+- **Referência**: [docs/fluxos.md](../fluxos.md)
 
 ### 5. Modelo de Dados (ER)
 - **Arquivo**: `modelo-dados.svg`
-- **Descrição**: Diagrama Entidade-Relacionamento do schema PostgreSQL
-- **Referência**: [docs/modelos-de-dados.md](../docs/modelos-de-dados.md)
+- **Descrição**: Diagrama de modelo de dados do projeto ContactManager
+- **Referência**: [docs/modelos-de-dados.md](../modelos-de-dados.md)
 
 ## Como Usar
 
