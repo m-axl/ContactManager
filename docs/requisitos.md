@@ -2,7 +2,7 @@
 
 ## Introdução
 
-ContactManager é um sistema de terminal para gerenciamento local de contatos. O objetivo é fornecer operações básicas de cadastro, consulta, remoção e persistência em arquivo.
+ContactManager é um sistema de terminal para gerenciamento local de contatos. O objetivo é fornecer operações básicas de cadastro, listagem e persistência em arquivo, evoluindo depois para consulta e remoção.
 
 ## Escopo
 
@@ -21,6 +21,18 @@ O sistema opera localmente e não depende de rede ou banco de dados externo na f
 | RF-05 | Salvar dados      | Persistir contatos em arquivo        | Alta       | UC-5        |
 | RF-06 | Carregar dados    | Ler contatos ao iniciar o sistema    | Alta       | UC-6        |
 | RF-07 | Encerrar          | Finalizar o programa de forma limpa  | Alta       | UC-7        |
+
+## Estado dos Requisitos Funcionais
+
+| ID    | Estado        | Observação |
+|-------|---------------|------------|
+| RF-01 | Implementado  | Disponível na opção 1 do menu |
+| RF-02 | Implementado  | Disponível na opção 2 do menu |
+| RF-03 | Planejado     | Declarado no cabeçalho, mas ainda sem implementação no menu |
+| RF-04 | Planejado     | Declarado no cabeçalho, mas ainda sem implementação no menu |
+| RF-05 | Implementado  | Executado ao sair do programa |
+| RF-06 | Implementado  | Executado ao iniciar o programa |
+| RF-07 | Implementado  | Disponível na opção 3 do menu |
 
 ## Requisitos Não Funcionais
 
@@ -65,12 +77,15 @@ O ContactManager será considerado funcional quando:
 
 * for possível adicionar contatos
 * for possível listar contatos
-* for possível buscar contatos
-* for possível remover contatos
 * os dados forem salvos corretamente
 * os dados forem carregados corretamente
 * o programa encerrar sem perda de informações
 
+Para o ciclo completo planejado, também será necessário:
+
+* buscar contatos por nome ou telefone
+* remover contatos cadastrados
+
 ## Estado atual
 
-A implementação atual está em desenvolvimento. A documentação descreve o projeto real, mas o código ainda precisa ser corrigido para suportar todas as funcionalidades previstas.
+A implementação atual está em desenvolvimento. O CLI básico já cobre adicionar, listar, carregar e salvar contatos. Busca e remoção permanecem como funcionalidades planejadas.

@@ -18,10 +18,15 @@ Permitir que um usuário manipule contatos em linha de comando e mantenha os dad
 
 * Adicionar contatos
 * Listar contatos
-* Buscar contatos
-* Remover contatos
 * Salvar contatos em arquivo
 * Carregar contatos ao iniciar
+* Encerrar o programa salvando os dados
+
+# Funcionalidades planejadas
+
+* Buscar contatos
+* Remover contatos
+* Melhorar validação das entradas
 
 # Estrutura do projeto
 
@@ -39,8 +44,12 @@ ContactManager/
 │  ├─ requisitos.md
 │  ├─ resultados.md
 │  ├─ testes.md
-│  └─ diario/
-│     └─ diario.md
+├─ diario/
+│  ├─ diario.md
+│  ├─ 2026-05-31.md
+│  ├─ 2026-06-05.md
+│  ├─ 2026-06-09.md
+│  └─ 2026-06-11.md
 ├─ include/
 │  ├─ contact.h
 │  └─ storage.h
@@ -50,21 +59,23 @@ ContactManager/
    └─ storage.c
 ```
 
-# Como compilar
+# Como compilar e executar
 
-O projeto ainda está em desenvolvimento. Para compilar após corrigir as implementações, use:
+O projeto está em desenvolvimento, mas o fluxo básico de adicionar, listar, carregar e salvar contatos já pode ser compilado:
 
 ```bash
 mkdir -p data
 gcc -Iinclude src/main.c src/contact.c src/storage.c -o contactmanager
+./contactmanager
 ```
 
 # Status do projeto
 
-* Implementação parcial em `src/contact.c`.
-* Interface de persistência definida em `include/storage.h`.
-* `src/storage.c` ainda precisa de correção e validação.
-* `src/main.c` ainda não contém o menu principal e o fluxo de execução.
+* `src/main.c` contém menu interativo com opções para adicionar, listar e sair.
+* `src/contact.c` implementa `addContact` e `listContacts`.
+* `src/storage.c` implementa `saveContacts` e `loadContacts` usando `data/contacts.txt`.
+* `removeContact` e `findContact` estão declaradas em `include/contact.h`, mas ainda não foram implementadas.
+* O menu ainda não possui opções de busca e remoção.
 
 # Documentação
 
@@ -77,7 +88,7 @@ gcc -Iinclude src/main.c src/contact.c src/storage.c -o contactmanager
 * `docs/product-backlog.md` — backlog de funcionalidades.
 * `docs/resultados.md` — resultados concluídos.
 * `docs/testes.md` — casos de teste.
-* `docs/diario/diario.md` — histórico de desenvolvimento.
+* `diario/diario.md` — histórico de desenvolvimento.
 * `CONTRIBUTING.md` — guia de convenção de commits.
 
 # Convenção de commits
@@ -93,4 +104,4 @@ Use prefixos de commit para organizar o histórico do projeto:
 
 # Observações
 
-O projeto está em fase de desenvolvimento e a documentação foi reorganizada para refletir o estado atual do código e do planejamento.
+O projeto está em fase de desenvolvimento. A documentação diferencia o que já está implementado no CLI básico do que permanece planejado para as próximas etapas.

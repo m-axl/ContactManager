@@ -41,8 +41,9 @@ Maria,21988887777
 
 ## Limitações atuais
 - O modelo atual não inclui campos de e-mail, ID ou categorias.
-- A implementação de persistência ainda não está concluída.
-- Caso o diretório `data/` não exista, a aplicação deve criar o diretório antes de salvar os dados.
+- A persistência atual usa um formato simples separado por vírgula e ainda não trata vírgulas dentro dos campos.
+- Caso o diretório `data/` não exista, a aplicação cria o diretório antes de salvar os dados.
+- O carregamento atual assume que cada linha válida possui nome e telefone no formato `nome,telefone`.
 
 ## Possíveis extensões futuras
 - adicionar campo `email`

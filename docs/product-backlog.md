@@ -23,16 +23,31 @@ Este documento contém os itens principais a serem desenvolvidos para o projeto 
 - **PB-010**: Como desenvolvedor, quero testes básicos para validar as funcionalidades principais.
 
 ## Prioridade Inicial
-1. PB-001: Adicionar contato
-2. PB-002: Listar contatos
-3. PB-005: Salvar contatos em arquivo
-4. PB-006: Carregar contatos do arquivo
-5. PB-003: Buscar contatos
-6. PB-004: Remover contatos
-7. PB-007: Menu de terminal
-8. PB-008: Mensagens do sistema
-9. PB-009: Documentação
-10. PB-010: Testes básicos
+1. PB-003: Buscar contatos
+2. PB-004: Remover contatos
+3. PB-008: Melhorar mensagens e validação de entrada
+4. PB-010: Ampliar testes básicos
+5. PB-009: Manter documentação atualizada
+6. PB-005: Evoluir persistência em arquivo
+7. PB-006: Evoluir carregamento de dados
+8. PB-007: Evoluir menu de terminal
+9. PB-001: Adicionar contato
+10. PB-002: Listar contatos
+
+## Status dos itens
+
+| ID     | Estado        | Observação |
+|--------|---------------|------------|
+| PB-001 | Implementado  | Adição disponível no menu atual |
+| PB-002 | Implementado  | Listagem disponível no menu atual |
+| PB-003 | Pendente      | Ainda sem opção no menu |
+| PB-004 | Pendente      | Ainda sem opção no menu |
+| PB-005 | Implementado  | Salvamento em `data/contacts.txt` ao sair |
+| PB-006 | Implementado  | Carregamento em `data/contacts.txt` ao iniciar |
+| PB-007 | Parcial       | Menu possui adicionar, listar e sair |
+| PB-008 | Parcial       | Existem mensagens básicas; validações ainda são simples |
+| PB-009 | Em andamento  | Documentação atualizada conforme evolução |
+| PB-010 | Em andamento  | Testes manuais registrados em `tests/` |
 
 ## Notas
 - Este backlog inicial serve de base para o planejamento das próximas sprints.
@@ -43,7 +58,7 @@ Este documento contém os itens principais a serem desenvolvidos para o projeto 
 ### Sprint 1 — 09/06/2026 a 16/06/2026
 - **Meta:** estabilizar a versão CLI completa e a persistência local.
 - **Itens principais:** PB-001, PB-002, PB-005, PB-006, PB-003.
-- **Critérios de aceitação:** o sistema adiciona, lista, busca, remove e salva contatos localmente; o fluxo CLI está validado.
+- **Critérios de aceitação:** o sistema adiciona, lista, carrega e salva contatos localmente; busca e remoção ficam registradas como próximos itens caso não sejam concluídas na sprint.
 
 ### Sprint 2 — 17/06/2026 a 23/06/2026
 - **Meta:** introduzir PostgreSQL como backend e automação com Python.

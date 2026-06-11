@@ -15,13 +15,14 @@ Resultado esperado:
 - A aplicação não deve travar ou apresentar erro de execução ao listar contatos.
 
 Observações:
-- Essa validação inicial foca em `src/contact.c` e no menu de interação ainda não implementado em `src/main.c`.
-- Caso a persistência em arquivo ainda não esteja funcionando, o teste deve ser considerado como um primeiro passo para validar o fluxo de entrada e exibição dos dados.
+- Essa validação inicial foca em `src/contact.c`, `src/main.c` e no fluxo básico de interação por terminal.
+- A persistência em arquivo deve ser validada observando a criação ou atualização de `data/contacts.txt`.
 
 ## Situação atual de testes
-- O código atual precisa ser ajustado antes que este caso de teste possa ser executado com sucesso.
-- Após a correção de `src/storage.c`, deve-se verificar também a persistência em `data/contacts.txt`.
-- Um próximo caso de teste deve incluir a remoção de contatos e a verificação de recarga de dados após reiniciar o programa.
+- O fluxo de adicionar, listar, salvar e carregar contatos já pode ser testado manualmente.
+- Existe registro de teste funcional em `tests/2026-06-09-add-list-persist.md`.
+- Um próximo caso de teste deve incluir busca e remoção assim que essas funções forem implementadas.
+- A recarga dos dados após reiniciar o programa deve continuar sendo validada em testes de regressão.
 
 ## Histórico de testes executados
 - Os casos de teste registrados são armazenados em `tests/`.

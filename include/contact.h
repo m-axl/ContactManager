@@ -17,4 +17,4 @@ int findContact(Contact contacts[], int id); // Prototipo de função para busca
 
 #endif 
 // Prototipo de função para buscar um contatos por nome. 
-// Podde ser melhorada para retornar um ponteiro para o contato encontrado ou NULL se não encontrado. 
+// Pode ser melhorada para retornar um ponteiro para o contato encontrado ou NULL se não encontrado. 

@@ -29,8 +29,8 @@ Responsável por:
 Responsável por:
 - adicionar um contato à lista em memória
 - listar contatos presentes em memória
-- buscar contatos
-- remover contatos
+- futuramente, buscar contatos
+- futuramente, remover contatos
 
 ### `src/storage.c`
 Responsável por:
@@ -77,12 +77,12 @@ ContactManager/
 ## Observações sobre o estado atual
 
 - `src/contact.c` contém funções de cadastro e listagem em memória.
-- `src/storage.c` está em desenvolvimento e precisa de correção para gravar e ler corretamente.
-- `src/main.c` ainda não possui o menu completo nem a sequência de chamadas de rotina.
+- `src/storage.c` grava e lê contatos em arquivo local.
+- `src/main.c` possui menu básico com opções de adicionar, listar e sair.
 - O arquivo de persistência esperado é `data/contacts.txt`.
+- Busca e remoção ainda não estão conectadas ao menu e seguem como evolução imediata.
 - A arquitetura futura prevê migração para PostgreSQL, adoção de Python em scripts de manutenção e a criação de uma interface gráfica.
 
 ## Referência
 - Veja também `docs/modelos-de-dados.md` para o formato do contato e do armazenamento.
-- O histórico de desenvolvimento está em `docs/diario/diario.md`.
-
+- O histórico de desenvolvimento está em `diario/diario.md`.

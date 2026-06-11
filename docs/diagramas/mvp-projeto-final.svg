@@ -1,10 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460">
   <style>
     .bg { fill: #f8fafc; }
-    .card { fill: #ffffff; stroke: #334155; stroke-width: 2; rx: 14; }
+    .card { fill: #ffffff; stroke: #334155; stroke-width: 2; }
+    .done { fill: #dcfce7; stroke: #15803d; stroke-width: 1; }
+    .todo { fill: #fef3c7; stroke: #b45309; stroke-width: 1; }
     .title { font: bold 22px sans-serif; fill: #0f172a; }
+    .section { font: bold 16px sans-serif; fill: #0f172a; }
     .subtitle { font: 14px sans-serif; fill: #334155; }
     .text { font: 12px sans-serif; fill: #475569; }
+    .label { font: bold 11px sans-serif; fill: #0f172a; }
     .line { stroke: #334155; stroke-width: 2; marker-end: url(#arrow); }
   </style>
   <defs>
@@ -12,30 +16,44 @@
       <path d="M0,0 L10,5 L0,10 Z" fill="#334155" />
     </marker>
   </defs>
-  <rect class="bg" width="900" height="420" rx="20" />
-  <text x="50" y="60" class="title">MVP planejado - ContactManager</text>
-  <text x="50" y="88" class="subtitle">Diagrama de visão geral do produto final</text>
+  <rect class="bg" width="900" height="460" rx="20" />
+  <text x="50" y="58" class="title">MVP atual - ContactManager</text>
+  <text x="50" y="86" class="subtitle">Visão do CLI básico implementado e das próximas funcionalidades planejadas</text>
 
-  <rect class="card" x="50" y="120" width="260" height="180" />
-  <text x="70" y="155" class="title">Terminal</text>
-  <text x="70" y="183" class="text">- Menu de navegação</text>
-  <text x="70" y="203" class="text">- Opções de CRUD</text>
-  <text x="70" y="223" class="text">- Mensagens e confirmações</text>
+  <rect class="card" x="50" y="120" width="250" height="185" rx="8" />
+  <text x="70" y="154" class="section">Interface CLI</text>
+  <rect class="done" x="70" y="174" width="105" height="24" rx="4" />
+  <text x="82" y="190" class="label">Implementado</text>
+  <text x="70" y="222" class="text">- Menu numerico</text>
+  <text x="70" y="244" class="text">- Adicionar contato</text>
+  <text x="70" y="266" class="text">- Listar contatos</text>
+  <text x="70" y="288" class="text">- Sair salvando dados</text>
 
-  <rect class="card" x="340" y="70" width="260" height="230" />
-  <text x="360" y="110" class="title">Lógica de Contatos</text>
-  <text x="360" y="138" class="text">- Adicionar contato</text>
-  <text x="360" y="158" class="text">- Listar contatos</text>
-  <text x="360" y="178" class="text">- Buscar contatos</text>
-  <text x="360" y="198" class="text">- Remover contatos</text>
-  <text x="360" y="218" class="text">- Validação de entradas</text>
+  <rect class="card" x="330" y="120" width="250" height="185" rx="8" />
+  <text x="350" y="154" class="section">Lógica de Contatos</text>
+  <rect class="done" x="350" y="174" width="105" height="24" rx="4" />
+  <text x="362" y="190" class="label">Implementado</text>
+  <text x="350" y="222" class="text">- Estrutura Contact</text>
+  <text x="350" y="244" class="text">- addContact()</text>
+  <text x="350" y="266" class="text">- listContacts()</text>
+  <text x="350" y="288" class="text">- Limite de 100 contatos</text>
 
-  <rect class="card" x="630" y="170" width="220" height="130" />
-  <text x="650" y="205" class="title">Persistência</text>
-  <text x="650" y="233" class="text">- Salvar em arquivo</text>
-  <text x="650" y="253" class="text">- Carregar ao iniciar</text>
-  <text x="650" y="273" class="text">- Manter dados entre execuções</text>
+  <rect class="card" x="610" y="120" width="240" height="185" rx="8" />
+  <text x="630" y="154" class="section">Persistência Local</text>
+  <rect class="done" x="630" y="174" width="105" height="24" rx="4" />
+  <text x="642" y="190" class="label">Implementado</text>
+  <text x="630" y="222" class="text">- saveContacts()</text>
+  <text x="630" y="244" class="text">- loadContacts()</text>
+  <text x="630" y="266" class="text">- Arquivo data/contacts.txt</text>
+  <text x="630" y="288" class="text">- Cria data/ ao salvar</text>
 
-  <line class="line" x1="310" y1="210" x2="340" y2="210" />
-  <line class="line" x1="600" y1="210" x2="630" y2="210" />
+  <rect class="card" x="190" y="345" width="520" height="70" rx="8" />
+  <text x="215" y="373" class="section">Proximas evolucoes do MVP</text>
+  <rect class="todo" x="215" y="390" width="80" height="22" rx="4" />
+  <text x="231" y="405" class="label">Planejado</text>
+  <text x="315" y="405" class="text">Buscar contatos, remover contatos e melhorar validacao de entradas</text>
+
+  <line class="line" x1="300" y1="212" x2="330" y2="212" />
+  <line class="line" x1="580" y1="212" x2="610" y2="212" />
+  <line class="line" x1="455" y1="305" x2="455" y2="345" />
 </svg>

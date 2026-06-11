@@ -68,7 +68,7 @@ classDiagram
 ## O que vai ser feito
 
 - Finalizar implementação de `removeContact` e `findContact` no backend C.
-- Corrigir e validar o armazenamento local em `src/storage.c` para garantir persistência confiável.
+- Ampliar a validação do armazenamento local em `src/storage.c` para garantir persistência confiável.
 - Migrar parte da persistência para PostgreSQL como backend robusto.
 - Criar scripts Python para migração de dados, importação/exportação e automações auxiliares.
 - Desenvolver a interface gráfica do projeto para melhorar a usabilidade.
@@ -83,7 +83,8 @@ classDiagram
   - salvamento e carregamento de contatos funcionando.
   - documentação atualizada sobre o estado atual.
 - Critério de aceitação:
-  - o programa compila sem erros e suporta adicionar, listar, buscar, remover e salvar contatos localmente.
+  - o programa compila sem erros e suporta adicionar, listar, carregar e salvar contatos localmente.
+  - busca e remoção são implementadas ou permanecem registradas como pendências da sprint.
   - os testes básicos de fluxo CLI passam.
 
 ### Sprint 2 — 17/06/2026 a 23/06/2026
